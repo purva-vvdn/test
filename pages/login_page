@@ -1,0 +1,24 @@
+import time
+from time import sleep
+from selenium.webdriver.common.action_chains import ActionChains
+from locators import create_account_locators
+from locators.create_account_locators import enter_the_name, name_locator
+
+
+class LoginPage:
+
+    def __init__(self,driver):
+        self.driver = driver
+        self.action = ActionChains(self.driver)
+
+  def clicking_on_create_account_button(self):
+        self.driver.find_element(*create_account_locators.create_another_account).click()
+        time.sleep(15)
+
+    def enter_the_email(self,email):
+        self.driver.find_element(*create_account_locators.email_address).send_keys(email)
+        time.sleep(10)
+
+  def enter_the_name(self,name):
+        self.driver.find_element(*create_account_locators.name_locator).send_keys(name)
+        time.sleep(5)

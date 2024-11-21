@@ -1,0 +1,3 @@
+create_another_account = By.XPATH, "//a[text()=' Create an Account ']"
+email_address = By.XPATH, '//input[@formcontrolname="email"]'
+name_locator = By.XPATH, '//input[@id="ip_firstName"]'

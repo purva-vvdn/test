@@ -19,6 +19,3 @@ class LoginPage:
         self.driver.find_element(*login_loactors.email_address).send_keys(email)
         time.sleep(10)
 
-  def enter_the_name(self,name):
-        self.driver.find_element(*login_loactors.name_locator).send_keys(name)
-        time.sleep(5)

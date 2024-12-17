@@ -1,18 +1,44 @@
-*** Settings ***
-Documentation     A test suite with a single test for al projects - Google Search
-...               Created by hats' Robotcorder
-Library           Selenium2Library    timeout=10
+*** Settings***
+# [Documentation]        Import all Library here
+Library        Collections
+Library        Dialogs
 
 *** Variables ***
-${BROWSER}    chrome
-${SLEEP}    3
+@{listData}        Radha    Rani    Ka    Naam    Japo
+&{dicData}         Name=Radha    Designation=Rani
 
 *** Test Cases ***
-al projects - Google Search test
-    Open Browser    https://www.google.com/search?q=al+projects&oq=al+projects&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIMCAIQABgKGLEDGIAEMgwIAxAAGAoYsQMYgAQyCQgEEAAYChiABDIJCAUQABgKGIAEMgkIBhAAGAoYgAQyCQgHEAAYChiABDIJCAgQABgKGIAEMgkICRAAGAoYgATSAQk1NjIyajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8    ${BROWSER}
-    Click Element    xpath=(//h3[@class="LC20lb MBeuO DKV0Md"])[9]
-    Click Link    //a[@href="https://nevonprojects.com/mechanical-project-categories/"]
-    Click Link    //a[@href="https://nevonprojects.com/power-generation-projects/"]
-    Click Element    xpath=(//img)[3]
+Tc_001
+    [Documentation]    List Operation
+    [Tags]    list
+    Append To List        ${listData}        Amit
+    Log to console      ${listData}
 
+Tc_002
+    [Documentation]    Perform Task on Dictionary
+    [Tags]    Dictionary
+    Set To Dictionary    ${dicData}    Name=Amit    Designation=Devloper    
+    # Log to console       &{dicData} 
+Tc_003
+    [Documentation]    Remove from Dictionary
+    [Tags]    Dictionary
+    Remove From Dictionary    ${dicData}    Name
+Tc_004
+    [Documentation]    Remove from List
+    [Tags]    list
+    Remove From List    ${listData}    4
+    Log to console      ${listData}
+    ${newvar}        Combine Lists    ${listData}    ${listData}
+    Log to console    ${newvar}
+
+Tc_005
+    [Documentation]        Dialogs Operation
+    [Tags]        Dialogs
+    ${user}       Get Selection From User    Select user    Admit    User1    User2
+    Log to console    ${user}
+    Pause Execution
+    ${detail}     Get Value From User    Input your email
+    ${password}    Get Value From User    Enter you password    hidden=yes
+    Log to console    ${detail}
+    Log to console    ${password}
     Close Browser

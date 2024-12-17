@@ -1,0 +1,18 @@
+*** Settings ***
+Documentation     A test suite with a single test for al projects - Google Search
+...               Created by hats' Robotcorder
+Library           Selenium2Library    timeout=10
+
+*** Variables ***
+${BROWSER}    chrome
+${SLEEP}    3
+
+*** Test Cases ***
+al projects - Google Search test
+    Open Browser    https://www.google.com/search?q=al+projects&oq=al+projects&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIMCAIQABgKGLEDGIAEMgwIAxAAGAoYsQMYgAQyCQgEEAAYChiABDIJCAUQABgKGIAEMgkIBhAAGAoYgAQyCQgHEAAYChiABDIJCAgQABgKGIAEMgkICRAAGAoYgATSAQk1NjIyajBqMTWoAgiwAgE&sourceid=chrome&ie=UTF-8    ${BROWSER}
+    Click Element    xpath=(//h3[@class="LC20lb MBeuO DKV0Md"])[9]
+    Click Link    //a[@href="https://nevonprojects.com/mechanical-project-categories/"]
+    Click Link    //a[@href="https://nevonprojects.com/power-generation-projects/"]
+    Click Element    xpath=(//img)[3]
+
+    Close Browser
